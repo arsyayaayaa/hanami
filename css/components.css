@@ -1,0 +1,234 @@
+/* ==================================================
+   Project Hanami
+   Components
+   Version 1.0
+================================================== */
+/* ==================================================
+   GLASS CARD
+================================================== */
+
+.glass-card{
+
+    position:relative;
+
+    padding:var(--space-8);
+
+    border-radius:var(--radius-lg);
+
+    background:var(--gradient-glass);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:blur(var(--glass-blur));
+
+    -webkit-backdrop-filter:blur(var(--glass-blur));
+
+    box-shadow:var(--shadow-medium);
+
+}
+
+/* ==================================================
+   BUTTON
+================================================== */
+
+.btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:var(--space-2);
+
+    padding:
+        var(--space-3)
+        var(--space-6);
+
+    border-radius:var(--radius-pill);
+
+    font-weight:var(--fw-medium);
+
+    transition:var(--transition-normal);
+
+    cursor:pointer;
+
+}
+
+.btn-primary{
+
+    background:var(--gradient-blush);
+
+    color:var(--color-white);
+
+    box-shadow:var(--shadow-soft);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-secondary{
+
+    border:1px solid var(--color-primary);
+
+    color:var(--color-text);
+
+}
+
+.btn-ghost{
+
+    background:transparent;
+
+}
+
+.icon-button{
+
+    width:52px;
+
+    height:52px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+}
+
+/* ==================================================
+   MUSIC BUTTON
+================================================== */
+
+.music-button{
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:30px;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:var(--gradient-blush);
+
+    box-shadow:var(--shadow-large);
+
+    z-index:var(--z-progress);
+
+}
+
+.section-title{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin-bottom:var(--space-10);
+
+}
+
+.divider{
+
+    width:120px;
+
+    height:2px;
+
+    margin:var(--space-4) auto;
+
+    background:var(--gradient-golden);
+
+}
+
+.quote-card{
+
+    max-width:700px;
+
+    margin-inline:auto;
+
+    text-align:center;
+
+}
+
+.photo-card{
+
+    overflow:hidden;
+
+    border-radius:var(--radius-md);
+
+    box-shadow:var(--shadow-medium);
+
+    transition:var(--transition-normal);
+
+}
+
+.photo-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.timeline-item{
+
+    position:relative;
+
+    padding-left:50px;
+
+}
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--color-overlay);
+
+    z-index:var(--z-modal);
+
+}
+
+.float{
+
+    animation:
+
+    floating
+
+    4s ease-in-out infinite;
+
+}
+
+.btn{
+
+    transition:
+
+    transform .35s ease,
+
+    box-shadow .35s ease;
+
+}
+
+.btn:hover{
+
+    transform:
+
+    translateY(-3px)
+
+    scale(1.02);
+
+}
