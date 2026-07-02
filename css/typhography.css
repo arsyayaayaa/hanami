@@ -1,0 +1,260 @@
+/* ==================================================
+   Project Hanami
+   Typography
+   Version 1.0
+================================================== */
+
+
+/* ==================================================
+   BODY
+================================================== */
+
+body{
+
+    font-family:var(--font-body);
+
+    font-size:var(--fs-body);
+
+    font-weight:var(--fw-normal);
+
+    line-height:1.8;
+
+    color:var(--color-text);
+
+    background:var(--color-background);
+
+}
+
+
+/* ==================================================
+   HEADINGS
+================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    font-family:var(--font-heading);
+
+    font-weight:var(--fw-semibold);
+
+    line-height:1.2;
+
+    letter-spacing:.02em;
+
+}
+
+
+/* ==================================================
+   DISPLAY
+================================================== */
+
+.display-xl{
+
+    font-family:var(--font-display);
+
+    font-size:var(--fs-display-xl);
+
+    font-weight:var(--fw-normal);
+
+    line-height:1;
+
+}
+
+.display{
+
+    font-family:var(--font-display);
+
+    font-size:var(--fs-display);
+
+    font-weight:var(--fw-normal);
+
+    line-height:1;
+
+}
+
+
+/* ==================================================
+   HERO TITLE
+================================================== */
+
+.hero-title{
+
+    font-family:var(--font-heading);
+
+    font-size:var(--fs-hero);
+
+    font-weight:var(--fw-bold);
+
+    line-height:1.15;
+
+}
+
+
+/* ==================================================
+   HEADINGS
+================================================== */
+
+.heading-1{
+
+    font-size:var(--fs-h1);
+
+}
+
+.heading-2{
+
+    font-size:var(--fs-h2);
+
+}
+
+.heading-3{
+
+    font-size:var(--fs-h3);
+
+}
+
+
+/* ==================================================
+   LEAD TEXT
+================================================== */
+
+.lead{
+
+    font-size:var(--fs-body-lg);
+
+    line-height:1.9;
+
+    color:var(--color-text);
+
+}
+
+
+/* ==================================================
+   BODY TEXT
+================================================== */
+
+.body-text{
+
+    font-size:var(--fs-body);
+
+    line-height:1.8;
+
+}
+
+
+/* ==================================================
+   CAPTION
+================================================== */
+
+.caption{
+
+    font-size:var(--fs-caption);
+
+    color:var(--color-text-light);
+
+}
+
+
+/* ==================================================
+   QUOTE
+================================================== */
+
+.quote{
+
+    font-family:var(--font-quote);
+
+    font-size:clamp(1.5rem,3vw,2.2rem);
+
+    font-style:italic;
+
+    line-height:1.6;
+
+    text-align:center;
+
+}
+
+
+/* ==================================================
+   SCENE NUMBER
+================================================== */
+
+.scene-number{
+
+    font-size:var(--fs-caption);
+
+    letter-spacing:.35em;
+
+    text-transform:uppercase;
+
+    color:var(--color-gold);
+
+}
+
+
+/* ==================================================
+   SCENE TITLE
+================================================== */
+
+.scene-title{
+
+    margin-top:var(--space-2);
+
+    margin-bottom:var(--space-3);
+
+    font-family:var(--font-heading);
+
+    font-size:clamp(2.8rem,6vw,4rem);
+
+    font-weight:var(--fw-bold);
+
+}
+
+
+/* ==================================================
+   SCENE SUBTITLE
+================================================== */
+
+.scene-subtitle{
+
+    max-width:650px;
+
+    margin-inline:auto;
+
+    color:var(--color-text-light);
+
+    line-height:1.8;
+
+}
+
+
+/* ==================================================
+   EMPHASIS
+================================================== */
+
+strong{
+
+    font-weight:var(--fw-semibold);
+
+}
+
+em{
+
+    font-style:italic;
+
+}
+
+
+/* ==================================================
+   TEXT SELECTION
+================================================== */
+
+::selection{
+
+    background:var(--color-primary);
+
+    color:var(--color-text);
+
+}
