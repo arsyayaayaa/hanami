@@ -1,0 +1,235 @@
+/* ==================================================
+   Project Hanami
+   Layout
+   Version 1.0
+================================================== */
+
+
+/* ==================================================
+   BODY
+================================================== */
+
+body{
+
+    overflow-x:hidden;
+
+}
+
+
+/* ==================================================
+   MAIN STORY
+================================================== */
+
+#story{
+
+    position:relative;
+
+    width:100%;
+
+}
+
+
+/* ==================================================
+   SCENE
+================================================== */
+
+.scene{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding-block:var(--space-12);
+
+    overflow:hidden;
+
+}
+
+
+/* ==================================================
+   SCENE CONTAINER
+================================================== */
+
+.scene-container{
+
+    width:min(
+        100%,
+        var(--container-width)
+    );
+
+    margin-inline:auto;
+
+    padding-inline:var(--container-padding);
+
+}
+
+
+/* ==================================================
+   CONTAINER
+================================================== */
+
+.container{
+
+    width:min(
+        100%,
+        var(--container-width)
+    );
+
+    margin-inline:auto;
+
+    padding-inline:var(--container-padding);
+
+}
+
+
+/* ==================================================
+   GRID
+================================================== */
+
+.grid{
+
+    display:grid;
+
+    gap:var(--space-6);
+
+}
+
+.grid-2{
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+}
+
+.grid-3{
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+}
+
+.grid-4{
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+}
+
+
+/* ==================================================
+   FLEX
+================================================== */
+
+.flex{
+
+    display:flex;
+
+}
+
+.flex-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+/* ==================================================
+   GAP
+================================================== */
+
+.gap-sm{
+
+    gap:var(--space-3);
+
+}
+
+.gap-md{
+
+    gap:var(--space-5);
+
+}
+
+.gap-lg{
+
+    gap:var(--space-8);
+
+}
+
+
+/* ==================================================
+   WIDTH
+================================================== */
+
+.w-full{
+
+    width:100%;
+
+}
+
+.h-full{
+
+    height:100%;
+
+}
+
+
+/* ==================================================
+   POSITION
+================================================== */
+
+.relative{
+
+    position:relative;
+
+}
+
+.absolute{
+
+    position:absolute;
+
+}
+
+.fixed{
+
+    position:fixed;
+
+}
+
+
+/* ==================================================
+   OVERFLOW
+================================================== */
+
+.overflow-hidden{
+
+    overflow:hidden;
+
+}
