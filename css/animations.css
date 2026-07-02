@@ -1,0 +1,361 @@
+/* ==================================================
+   Project Hanami
+   Animations
+   Version 1.0
+================================================== */
+
+/* ==================================================
+   FADE
+================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==================================================
+   FADE UP
+================================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==================================================
+   SCALE
+================================================== */
+
+@keyframes scaleIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==================================================
+   FLOAT
+================================================== */
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==================================================
+   PULSE
+================================================== */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes rotateSlow{
+
+    from{
+
+        transform:rotate(0);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes glow{
+
+    0%{
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.4;
+
+    }
+
+}
+
+@keyframes sparkle{
+
+    0%{
+
+        transform:scale(.5);
+
+        opacity:0;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(1.5);
+
+        opacity:0;
+
+    }
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
+
+.fade-in{
+
+    animation:
+
+    fadeIn
+
+    .8s ease forwards;
+
+}
+
+.fade-up{
+
+    animation:
+
+    fadeUp
+
+    .8s ease forwards;
+
+}
+
+.scale-in{
+
+    animation:
+
+    scaleIn
+
+    .8s ease forwards;
+
+}
+
+.float{
+
+    animation:
+
+    floating
+
+    5s ease-in-out infinite;
+
+}
+
+.glow{
+
+    animation:
+
+    glow
+
+    2.5s ease-in-out infinite;
+
+}
+
+.pulse{
+
+    animation:
+
+    pulse
+
+    2s ease infinite;
+
+}
+
+.delay-1{
+
+    animation-delay:.2s;
+
+}
+
+.delay-2{
+
+    animation-delay:.4s;
+
+}
+
+.delay-3{
+
+    animation-delay:.6s;
+
+}
+
+.delay-4{
+
+    animation-delay:.8s;
+
+}
+
+.delay-5{
+
+    animation-delay:1s;
+
+}
+
+@keyframes pageTurn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        rotateY(-10deg)
+
+        translateX(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        rotateY(0)
+
+        translateX(0);
+
+    }
+
+}
+
+animation: fadeUp .8s ease;
+
+.animate-on-scroll{
+
+    opacity:0;
+
+}
