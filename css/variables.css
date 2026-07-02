@@ -1,0 +1,38 @@
+/* ==========================================
+   GRADIENTS
+========================================== */
+
+--gradient-sakura:
+linear-gradient(
+    135deg,
+    #FFF8F5 0%,
+    #F8D7DA 100%
+);
+
+--gradient-blush:
+linear-gradient(
+    135deg,
+    #FCD5CE 0%,
+    #FFB5C2 100%
+);
+
+--gradient-golden:
+linear-gradient(
+    135deg,
+    #F8D7DA 0%,
+    #D4A373 100%
+);
+
+--gradient-night:
+linear-gradient(
+    180deg,
+    #23395B 0%,
+    #0B132B 100%
+);
+
+--gradient-glass:
+linear-gradient(
+    135deg,
+    rgba(255,255,255,.55),
+    rgba(255,255,255,.25)
+);
