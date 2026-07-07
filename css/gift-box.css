@@ -1,0 +1,150 @@
+/* ==================================================
+   GIFT BOX
+================================================== */
+.gift-box{
+
+    position:relative;
+
+    width:260px;
+
+    height:260px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+.gift-glow{
+
+    position:absolute;
+
+    inset:0;
+
+    margin:auto;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255, 181, 194, .35);
+
+    filter:blur(40px);
+
+    z-index:0;
+
+}
+.gift-body{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:180px;
+
+    border-radius:0 0 var(--radius-lg) var(--radius-lg);
+
+    background:var(--gradient-blush);
+
+    box-shadow:var(--shadow-large);
+
+    overflow:hidden;
+
+    z-index:2;
+
+}
+.gift-lid{
+
+    position:absolute;
+
+    top:0;
+
+    width:100%;
+
+    height:90px;
+
+    border-radius:var(--radius-lg);
+
+    background:var(--gradient-blush);
+
+    box-shadow:var(--shadow-medium);
+
+    transform-origin:bottom center;
+
+    z-index:3;
+
+}
+transform-origin: bottom center;
+
+.gift-ribbon-vertical{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:24px;
+
+    height:100%;
+
+    background:var(--gradient-golden);
+
+}
+
+.gift-ribbon-horizontal{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:100%;
+
+    height:24px;
+
+    background:var(--gradient-golden);
+
+}
+
+.gift-bow{
+
+    position:absolute;
+
+    top:-18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:60px;
+
+    height:36px;
+
+}
+.gift-box{
+
+    transition:
+
+        transform var(--transition-normal);
+
+}
+.gift-box:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.gift-box:focus-visible{
+
+    outline:2px solid var(--color-accent);
+
+    outline-offset:8px;
+
+}
+
+
