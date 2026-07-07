@@ -1,0 +1,152 @@
+/* ==================================================
+   GIFT LOCK
+================================================== */
+
+.gift-lock{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:var(--space-6);
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(8px);
+
+    -webkit-backdrop-filter:blur(8px);
+
+    z-index:20;
+
+}
+.keypad-card{
+
+    width:min(100%,380px);
+
+    text-align:center;
+
+}
+.keypad-title{
+
+    margin-bottom:var(--space-2);
+
+    font-size:var(--fs-h3);
+
+}
+
+.keypad-subtitle{
+
+    margin-bottom:var(--space-6);
+
+    color:var(--color-text-light);
+
+}
+.pin-display{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:var(--space-3);
+
+    margin-bottom:var(--space-8);
+
+}
+.pin-dot{
+
+    width:16px;
+
+    height:16px;
+
+    border-radius:50%;
+
+    border:2px solid var(--color-primary);
+
+    transition:var(--transition-normal);
+
+}
+.pin-dot.active{
+
+    background:var(--color-primary);
+
+    transform:scale(1.15);
+
+}
+
+.keypad{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:var(--space-3);
+
+}
+.key{
+
+    aspect-ratio:1;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.65);
+
+    font-size:1.1rem;
+
+    font-weight:var(--fw-semibold);
+
+    transition:var(--transition-normal);
+
+}
+
+.key:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-soft);
+
+}
+.key:active{
+
+    transform:scale(.95);
+
+}
+.key-action{
+
+    background:var(--gradient-golden);
+
+    color:white;
+
+}
+.keypad-message{
+
+    min-height:24px;
+
+    margin-top:var(--space-5);
+
+    font-size:var(--fs-caption);
+
+    color:var(--color-accent);
+
+}
+
+.gift-lock.hidden{
+
+    display:none;
+
+}
+giftLock.classList.remove("hidden");
+.keypad-card.error{
+
+    animation:shake .45s ease;
+
+}
+
+
+
+
