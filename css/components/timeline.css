@@ -1,0 +1,249 @@
+/* ==================================================
+   TIMELINE
+================================================== */
+
+/* ------------------------------------------
+   Container
+------------------------------------------ */
+
+.timeline {
+
+    position: relative;
+
+    width: min(100%, 760px);
+
+    margin-inline: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2rem;
+
+    padding: 2rem 0;
+
+}
+
+/* ------------------------------------------
+   Timeline Line
+------------------------------------------ */
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    left: 28px;
+
+    width: 2px;
+
+    background: var(--gradient-primary);
+
+    opacity: .5;
+
+}
+
+/* ------------------------------------------
+   Timeline Item
+------------------------------------------ */
+
+.timeline-item {
+
+    position: relative;
+
+    display: flex;
+
+    gap: 2rem;
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity var(--transition-normal),
+        transform var(--transition-normal);
+
+}
+
+.timeline-item.is-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* ------------------------------------------
+   Marker
+------------------------------------------ */
+
+.timeline-marker {
+
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 56px;
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+.timeline-marker::before {
+
+    content: "✿";
+
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 28px;
+
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: var(--color-surface);
+
+    color: var(--color-primary);
+
+    font-size: 1rem;
+
+    box-shadow: var(--shadow-medium);
+
+}
+
+/* ------------------------------------------
+   Card
+------------------------------------------ */
+
+.timeline-card {
+
+    flex: 1;
+
+    padding: 1.5rem;
+
+    border-radius: var(--radius-lg);
+
+    background: var(--color-surface);
+
+    box-shadow: var(--shadow-medium);
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+
+}
+
+.timeline-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: var(--shadow-large);
+
+}
+
+/* ------------------------------------------
+   Date
+------------------------------------------ */
+
+.timeline-date {
+
+    display: inline-block;
+
+    margin-bottom: .5rem;
+
+    color: var(--color-text-light);
+
+    font-size: var(--fs-caption);
+
+    letter-spacing: .05em;
+
+}
+
+/* ------------------------------------------
+   Title
+------------------------------------------ */
+
+.timeline-title {
+
+    margin-bottom: .75rem;
+
+    color: var(--color-primary);
+
+    font-size: var(--fs-h4);
+
+}
+
+/* ------------------------------------------
+   Description
+------------------------------------------ */
+
+.timeline-description {
+
+    color: var(--color-text);
+
+    line-height: 1.8;
+
+}
+
+/* ------------------------------------------
+   Active Item
+------------------------------------------ */
+
+.timeline-item.is-active .timeline-marker::before {
+
+    transform: scale(1.15);
+
+    box-shadow: var(--shadow-large);
+
+}
+
+/* ------------------------------------------
+   Responsive
+------------------------------------------ */
+
+@media (max-width: 768px) {
+
+    .timeline {
+
+        padding-inline: .5rem;
+
+    }
+
+    .timeline {
+
+        gap: 1.5rem;
+
+    }
+
+    .timeline::before {
+
+        left: 24px;
+
+    }
+
+    .timeline-item {
+
+        gap: 1rem;
+
+    }
+
+    .timeline-card {
+
+        padding: 1.25rem;
+
+    }
+
+}
