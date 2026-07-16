@@ -14,6 +14,7 @@ import Keypad from "../components/keypad.js";
 import Envelope from "../components/envelope.js";
 import Letter from "../components/letter.js";
 import Gallery from "../components/gallery.js";
+import Timeline from "../components/timeline.js";
 
 class GiftScene {
 
@@ -63,6 +64,9 @@ class GiftScene {
         this.gallery = new Gallery({
             element: "#scene-gallery"
         });
+        this.timeline = new Timeline({
+            element: "#scene-timeline"
+        });
 
     }
 
@@ -73,17 +77,13 @@ class GiftScene {
      */
 
     init() {
-
         this.giftBox.init();
-
         this.keypad.init();
-
         this.envelope.init();
-
         this.letter.init();
-
         this.bindEvents();
         this.gallery.init();
+        this.timeline.init();
 
     }
 
@@ -138,7 +138,18 @@ class GiftScene {
                 this.nextScene();
             }
         );
-
+        this.gallery.element.addEventListener(
+            "gallery:completed",
+            ()=>{
+                this.showTimeline();
+            }
+        );
+        this.timeline.element.addEventListener(
+            "timeline:completed",
+            ()=>{
+                this.nextScene();
+            }
+        );
     }
 
     /**
@@ -231,10 +242,7 @@ class GiftScene {
          * Scene Manager
          * (Phase 6)
          */
-
         console.log("Next Scene");
-        console.log("Timeline Scene");
-
     }
     /**
     * ------------------------------------------
@@ -245,7 +253,26 @@ class GiftScene {
         this.letter.hide();
         this.gallery.show();
     }
-
+    nextScene(){
+        console.log("Timeline Scene");
+    }
+    showTimeline(){
+        this.gallery.hide();
+        this.timeline.show();
+    }
+    nextScene(){
+    console.log("Wishes Scene");
+    }
+    nextScene(){
+    console.log("Wishes Scene");
+    }
+    /*** ------------------------------------------
+    * Show Timeline
+    * ------------------------------------------*/
+    showTimeline(){
+        this.gallery.hide();
+        this.timeline.show();
+    }
 }
 
 export default GiftScene;
