@@ -13,6 +13,7 @@ import GiftBox from "../components/gift-box.js";
 import Keypad from "../components/keypad.js";
 import Envelope from "../components/envelope.js";
 import Letter from "../components/letter.js";
+import Gallery from "../components/gallery.js";
 
 class GiftScene {
 
@@ -59,6 +60,9 @@ class GiftScene {
             element: "#birthday-letter"
 
         });
+        this.gallery = new Gallery({
+            element: "#scene-gallery"
+        });
 
     }
 
@@ -79,6 +83,7 @@ class GiftScene {
         this.letter.init();
 
         this.bindEvents();
+        this.gallery.init();
 
     }
 
@@ -120,6 +125,18 @@ class GiftScene {
 
             () => this.nextScene()
 
+        );
+        this.letter.element.addEventListener(
+            "letter:continue",
+            ()=>{
+                this.showGallery();
+            }
+        );
+        this.gallery.element.addEventListener(
+            "gallery:completed",
+            ()=>{
+                this.nextScene();
+            }
         );
 
     }
@@ -216,7 +233,17 @@ class GiftScene {
          */
 
         console.log("Next Scene");
+        console.log("Timeline Scene");
 
+    }
+    /**
+    * ------------------------------------------
+    * Show Gallery
+    * ------------------------------------------
+    */
+    showGallery(){
+        this.letter.hide();
+        this.gallery.show();
     }
 
 }
