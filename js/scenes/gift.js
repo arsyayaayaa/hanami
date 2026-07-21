@@ -16,6 +16,7 @@ import Letter from "../components/letter.js";
 import Gallery from "../components/gallery.js";
 import Timeline from "../components/timeline.js";
 import Wishes from "../components/wishes.js";
+import Celebration from "../components/celebration.js";
 
 class GiftScene {
 
@@ -71,6 +72,9 @@ class GiftScene {
         this.wishes = new Wishes({
             element: "#scene-wishes"
         });
+        this.celebration = new Celebration({
+            element: "#scene-celebration"
+        });
 
     }
 
@@ -89,6 +93,7 @@ class GiftScene {
         this.gallery.init();
         this.timeline.init();
         this.wishes.init();
+        this.celebration.init();
 
     }
 
@@ -163,6 +168,18 @@ class GiftScene {
         );
         this.wishes.element.addEventListener(
             "wishes:completed",
+            ()=>{
+                this.nextScene();
+            }
+        );
+        this.wishes.element.addEventListener(
+            "wishes:completed",
+            ()=>{
+                this.showCelebration();
+            }
+        );
+        this.celebration.element.addEventListener(
+            "celebration:completed",
             ()=>{
                 this.nextScene();
             }
@@ -296,6 +313,13 @@ class GiftScene {
     showTimeline(){
         this.gallery.hide();
         this.timeline.show();
+    }
+    showCelebration(){
+        this.wishes.hide();
+        this.celebration.show();
+    }
+    nextScene(){
+        console.log("Ending Scene");
     }
 }
 
