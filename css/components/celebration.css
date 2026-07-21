@@ -1,0 +1,273 @@
+/* ==================================================
+   CELEBRATION
+================================================== */
+
+/* ------------------------------------------
+   Root
+------------------------------------------ */
+
+.celebration {
+
+    position: relative;
+
+    width: min(100%, 900px);
+
+    min-height: 80vh;
+
+    margin-inline: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+}
+
+/* ------------------------------------------
+   Background Layer
+------------------------------------------ */
+
+.celebration-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(circle at top,
+            rgba(255,255,255,.45),
+            transparent 70%),
+        var(--gradient-background);
+
+    z-index: 1;
+
+}
+
+/* ------------------------------------------
+   Confetti Layer
+------------------------------------------ */
+
+.celebration-confetti {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+}
+
+/* ------------------------------------------
+   Balloon Layer
+------------------------------------------ */
+
+.celebration-balloons {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 3;
+
+}
+
+/* ------------------------------------------
+   Content
+------------------------------------------ */
+
+.celebration-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(100%, 650px);
+
+    padding: 3rem;
+
+    text-align: center;
+
+    border-radius: var(--radius-xl);
+
+    background: rgba(255,255,255,.68);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow: var(--shadow-large);
+
+}
+
+/* ------------------------------------------
+   Title
+------------------------------------------ */
+
+.celebration-title {
+
+    margin-bottom: .75rem;
+
+    color: var(--color-primary);
+
+    font-size: clamp(2.5rem, 5vw, 4rem);
+
+    font-weight: 700;
+
+}
+
+/* ------------------------------------------
+   Name
+------------------------------------------ */
+
+.celebration-name {
+
+    margin-bottom: 1rem;
+
+    color: var(--color-secondary);
+
+    font-size: var(--fs-h3);
+
+    font-weight: 600;
+
+}
+
+/* ------------------------------------------
+   Message
+------------------------------------------ */
+
+.celebration-message {
+
+    margin-bottom: 2rem;
+
+    color: var(--color-text);
+
+    line-height: 1.9;
+
+    font-size: var(--fs-body);
+
+}
+
+/* ------------------------------------------
+   Continue Button
+------------------------------------------ */
+
+.celebration-button {
+
+    padding: .9rem 2rem;
+
+    border: none;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    background: var(--gradient-primary);
+
+    color: white;
+
+    font-size: var(--fs-body);
+
+    font-weight: 600;
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+
+}
+
+.celebration-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-medium);
+
+}
+
+.celebration-button:active {
+
+    transform: scale(.98);
+
+}
+
+/* ------------------------------------------
+   Decorative Glow
+------------------------------------------ */
+
+.celebration::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 380px;
+
+    height: 380px;
+
+    border-radius: 50%;
+
+    background: rgba(255,192,203,.25);
+
+    filter: blur(100px);
+
+    top: -120px;
+
+    right: -120px;
+
+    z-index: 0;
+
+}
+
+.celebration::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.35);
+
+    filter: blur(80px);
+
+    bottom: -100px;
+
+    left: -100px;
+
+    z-index: 0;
+
+}
+
+/* ------------------------------------------
+   Responsive
+------------------------------------------ */
+
+@media (max-width: 768px) {
+
+    .celebration-content {
+
+        padding: 2rem;
+
+    }
+
+    .celebration-title {
+
+        font-size: 2.2rem;
+
+    }
+
+    .celebration-name {
+
+        font-size: 1.25rem;
+
+    }
+
+}
