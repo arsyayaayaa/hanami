@@ -4,11 +4,12 @@
  * Component : Gallery
  * Description : Handle memory gallery rendering
  *               and navigation.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import GALLERY from "../data/gallery-data.js";
+import eventBus from "../core/event-bus.js";
 
 class Gallery {
 
@@ -40,6 +41,8 @@ class Gallery {
 
         this.visible = false;
 
+        this.completed = false;
+
     }
 
     /**
@@ -69,19 +72,13 @@ class Gallery {
     bindEvents() {
 
         this.previousButton?.addEventListener(
-
             "click",
-
             () => this.previous()
-
         );
 
         this.nextButton?.addEventListener(
-
             "click",
-
             () => this.next()
-
         );
 
     }
@@ -101,7 +98,6 @@ class Gallery {
         if (this.image) {
 
             this.image.src = memory.image;
-
             this.image.alt = memory.alt;
 
         }
@@ -139,6 +135,8 @@ class Gallery {
 
         this.currentIndex--;
 
+        this.completed = false;
+
         this.animate();
 
         this.render();
@@ -155,7 +153,11 @@ class Gallery {
 
         if (this.currentIndex >= GALLERY.length - 1) {
 
-            this.emit("gallery:completed");
+            if (this.completed) return;
+
+            this.completed = true;
+
+            eventBus.emit("gallery:completed");
 
             return;
 
@@ -208,11 +210,8 @@ class Gallery {
         if (!this.element) return;
 
         this.element.classList.toggle(
-
             "is-visible",
-
             this.visible
-
         );
 
     }
@@ -232,28 +231,6 @@ class Gallery {
         void this.card.offsetWidth;
 
         this.card.classList.add("is-changing");
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        if (!this.element) return;
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
-
-        );
 
     }
 
