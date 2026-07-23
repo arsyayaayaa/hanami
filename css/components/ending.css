@@ -1,0 +1,233 @@
+/* ==================================================
+   ENDING
+================================================== */
+
+/* ------------------------------------------
+   Container
+------------------------------------------ */
+
+.ending {
+
+    width: min(100%, 760px);
+
+    min-height: 80vh;
+
+    margin-inline: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+/* ------------------------------------------
+   Card
+------------------------------------------ */
+
+.ending-card {
+
+    width: 100%;
+
+    padding: 3rem;
+
+    border-radius: var(--radius-xl);
+
+    background: rgba(255, 255, 255, .72);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow: var(--shadow-large);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5rem;
+
+}
+
+/* ------------------------------------------
+   Title
+------------------------------------------ */
+
+.ending-title {
+
+    color: var(--color-primary);
+
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+
+    font-weight: 700;
+
+}
+
+/* ------------------------------------------
+   Message
+------------------------------------------ */
+
+.ending-message {
+
+    color: var(--color-text);
+
+    line-height: 1.9;
+
+    font-size: var(--fs-body);
+
+}
+
+/* ------------------------------------------
+   Quote
+------------------------------------------ */
+
+.ending-quote {
+
+    margin-inline: auto;
+
+    max-width: 600px;
+
+    padding: 1.5rem;
+
+    border-left: 4px solid var(--color-primary);
+
+    border-radius: var(--radius-md);
+
+    background: rgba(255,255,255,.45);
+
+    color: var(--color-text-light);
+
+    font-style: italic;
+
+    line-height: 1.8;
+
+}
+
+/* ------------------------------------------
+   Replay Button
+------------------------------------------ */
+
+.ending-button {
+
+    align-self: center;
+
+    padding: .9rem 2.2rem;
+
+    border: none;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    background: var(--gradient-primary);
+
+    color: white;
+
+    font-size: var(--fs-body);
+
+    font-weight: 600;
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+
+}
+
+.ending-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-medium);
+
+}
+
+.ending-button:active {
+
+    transform: scale(.98);
+
+}
+
+/* ------------------------------------------
+   Decorative Glow
+------------------------------------------ */
+
+.ending::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 192, 203, .20);
+
+    filter: blur(90px);
+
+    top: -80px;
+
+    right: -60px;
+
+    z-index: -1;
+
+}
+
+.ending::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.28);
+
+    filter: blur(70px);
+
+    bottom: -70px;
+
+    left: -50px;
+
+    z-index: -1;
+
+}
+
+/* ------------------------------------------
+   Responsive
+------------------------------------------ */
+
+@media (max-width: 768px) {
+
+    .ending-card {
+
+        padding: 2rem;
+
+    }
+
+    .ending-title {
+
+        font-size: 2rem;
+
+    }
+
+    .ending-quote {
+
+        padding: 1.25rem;
+
+    }
+
+    .ending-button {
+
+        width: 100%;
+
+    }
+
+}
