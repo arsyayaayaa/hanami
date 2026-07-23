@@ -3,9 +3,11 @@
  * Project Hanami
  * Component : Envelope
  * Description : Handle envelope visibility and opening.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
+
+import eventBus from "../core/event-bus.js";
 
 class Envelope {
 
@@ -35,6 +37,7 @@ class Envelope {
         if (!this.element) return;
 
         this.bindEvents();
+
         this.updateState();
 
     }
@@ -101,7 +104,7 @@ class Envelope {
 
         this.updateState();
 
-        this.emit("envelope:opened");
+        eventBus.emit("envelope:opened");
 
     }
 
@@ -113,9 +116,13 @@ class Envelope {
 
     close() {
 
+        if (!this.opened) return;
+
         this.opened = false;
 
         this.updateState();
+
+        eventBus.emit("envelope:closed");
 
     }
 
@@ -154,39 +161,13 @@ class Envelope {
         if (!this.element) return;
 
         this.element.classList.toggle(
-
             "hidden",
-
             !this.visible
-
         );
 
         this.element.classList.toggle(
-
             "is-open",
-
             this.opened
-
-        );
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Custom Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
-
         );
 
     }
