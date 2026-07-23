@@ -3,14 +3,17 @@
  * Project Hanami
  * Scene : Gift
  * Description : Handle Gift Scene Flow
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import CONFIG from "../config/config.js";
 
+import eventBus from "../core/event-bus.js";
+
 import GiftBox from "../components/gift-box.js";
 import Keypad from "../components/keypad.js";
+import Envelope from "../components/envelope.js";
 
 class GiftScene {
 
@@ -26,8 +29,6 @@ class GiftScene {
 
         this.giftLock = document.querySelector("#gift-lock");
 
-        this.envelope = document.querySelector("#gift-envelope");
-
         this.giftBox = new GiftBox({
 
             element: "#gift-box"
@@ -42,9 +43,13 @@ class GiftScene {
 
             message: "#gift-lock .keypad-message",
 
-            maxLength: 6,
+            maxLength: 6
 
-            onSubmit: (code) => this.validateCode(code)
+        });
+
+        this.envelope = new Envelope({
+
+            element: "#gift-envelope"
 
         });
 
@@ -61,6 +66,8 @@ class GiftScene {
         this.giftBox.init();
 
         this.keypad.init();
+
+        this.envelope.init();
 
         this.bindEvents();
 
@@ -82,7 +89,15 @@ class GiftScene {
 
         );
 
-        this.giftBox.element.addEventListener(
+        eventBus.on(
+
+            "keypad:submit",
+
+            ({ code }) => this.validateCode(code)
+
+        );
+
+        eventBus.on(
 
             "gift:opened",
 
@@ -178,9 +193,7 @@ class GiftScene {
 
     showEnvelope() {
 
-        if (!this.envelope) return;
-
-        this.envelope.classList.remove("hidden");
+        this.envelope.show();
 
     }
 
