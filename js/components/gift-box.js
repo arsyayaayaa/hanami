@@ -3,9 +3,11 @@
  * Project Hanami
  * Component : Gift Box
  * Description : Handle Gift Box states and animations.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
+
+import eventBus from "../core/event-bus.js";
 
 class GiftBox {
 
@@ -80,11 +82,13 @@ class GiftBox {
 
         if (this.locked) return;
 
+        if (this.opened) return;
+
         this.opened = true;
 
         this.updateState();
 
-        this.emit("gift:opened");
+        eventBus.emit("gift:opened");
 
     }
 
@@ -96,11 +100,13 @@ class GiftBox {
 
     close() {
 
+        if (!this.opened) return;
+
         this.opened = false;
 
         this.updateState();
 
-        this.emit("gift:closed");
+        eventBus.emit("gift:closed");
 
     }
 
@@ -143,28 +149,6 @@ class GiftBox {
         this.element.classList.toggle("is-unlocked", !this.locked);
 
         this.element.classList.toggle("is-open", this.opened);
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Custom Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        if (!this.element) return;
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
-
-        );
 
     }
 
