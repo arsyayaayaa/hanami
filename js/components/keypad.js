@@ -3,9 +3,11 @@
  * Project Hanami
  * Component : Keypad
  * Description : Handle keypad input and PIN display.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
+
+import eventBus from "../core/event-bus.js";
 
 class Keypad {
 
@@ -15,11 +17,9 @@ class Keypad {
         this.display = document.querySelector(options.display);
         this.message = document.querySelector(options.message);
 
-        this.maxLength = options.maxLength || 6;
+        this.maxLength = options.maxLength ?? 6;
 
         this.digits = [];
-
-        this.onSubmit = options.onSubmit || function () {};
 
     }
 
@@ -93,6 +93,8 @@ class Keypad {
 
         this.updateDisplay();
 
+        this.showMessage("");
+
     }
 
     /**
@@ -161,9 +163,11 @@ class Keypad {
 
         }
 
-        const code = this.digits.join("");
+        eventBus.emit("keypad:submit", {
 
-        this.onSubmit(code);
+            code: this.getValue()
+
+        });
 
     }
 
