@@ -3,16 +3,17 @@
  * Project : Hanami
  * Module  : Application Core
  * Description : Bootstrap Hanami application.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import sceneManager from "./scene-manager.js";
+import storyController from "./story-controller.js";
+
+// Scenes
+import GiftScene from "../scenes/gift.js";
 
 // Components
-import Gift from "../components/gift.js";
-import Keypad from "../components/keypad.js";
-import Envelope from "../components/envelope.js";
 import Letter from "../components/letter.js";
 import Gallery from "../components/gallery.js";
 import Timeline from "../components/timeline.js";
@@ -24,7 +25,7 @@ class App {
 
     constructor() {
 
-        this.components = {};
+        this.scenes = {};
 
     }
 
@@ -36,9 +37,11 @@ class App {
 
     init() {
 
-        this.createComponents();
+        this.createScenes();
 
         this.registerScenes();
+
+        storyController.init();
 
         this.start();
 
@@ -46,51 +49,53 @@ class App {
 
     /**
      * ------------------------------------------
-     * Create Components
+     * Create Scenes
      * ------------------------------------------
      */
 
-    createComponents() {
+    createScenes() {
 
-        this.components.gift = new Gift({
-            element: "#scene-gift"
-        });
+        this.scenes.gift = new GiftScene();
 
-        this.components.keypad = new Keypad({
-            element: "#scene-keypad"
-        });
+        this.scenes.letter = new Letter({
 
-        this.components.envelope = new Envelope({
-            element: "#scene-envelope"
-        });
-
-        this.components.letter = new Letter({
             element: "#scene-letter"
+
         });
 
-        this.components.gallery = new Gallery({
+        this.scenes.gallery = new Gallery({
+
             element: "#scene-gallery"
+
         });
 
-        this.components.timeline = new Timeline({
+        this.scenes.timeline = new Timeline({
+
             element: "#scene-timeline"
+
         });
 
-        this.components.wishes = new Wishes({
+        this.scenes.wishes = new Wishes({
+
             element: "#scene-wishes"
+
         });
 
-        this.components.celebration = new Celebration({
+        this.scenes.celebration = new Celebration({
+
             element: "#scene-celebration"
+
         });
 
-        this.components.ending = new Ending({
+        this.scenes.ending = new Ending({
+
             element: "#scene-ending"
+
         });
 
-        Object.values(this.components).forEach(component => {
+        Object.values(this.scenes).forEach(scene => {
 
-            component.init();
+            scene.init();
 
         });
 
@@ -98,23 +103,33 @@ class App {
 
     /**
      * ------------------------------------------
-     * Register Scene
+     * Register Scenes
      * ------------------------------------------
      */
 
     registerScenes() {
 
-        Object.entries(this.components).forEach(([name, component]) => {
+        Object.entries(this.scenes).forEach(
 
-            sceneManager.register(name, component);
+            ([name, scene]) => {
 
-        });
+                sceneManager.register(
+
+                    name,
+
+                    scene
+
+                );
+
+            }
+
+        );
 
     }
 
     /**
      * ------------------------------------------
-     * Start Application
+     * Start
      * ------------------------------------------
      */
 
