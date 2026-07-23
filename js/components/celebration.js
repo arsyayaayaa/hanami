@@ -3,11 +3,12 @@
  * Project Hanami
  * Component : Celebration
  * Description : Handle celebration scene.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import CELEBRATION from "../data/celebration-data.js";
+import eventBus from "../core/event-bus.js";
 
 class Celebration {
 
@@ -63,13 +64,29 @@ class Celebration {
 
     render() {
 
-        this.title.textContent = CELEBRATION.title;
+        if (this.title) {
 
-        this.name.textContent = CELEBRATION.recipient;
+            this.title.textContent = CELEBRATION.title;
 
-        this.message.textContent = CELEBRATION.message;
+        }
 
-        this.button.textContent = CELEBRATION.buttonText;
+        if (this.name) {
+
+            this.name.textContent = CELEBRATION.recipient;
+
+        }
+
+        if (this.message) {
+
+            this.message.textContent = CELEBRATION.message;
+
+        }
+
+        if (this.button) {
+
+            this.button.textContent = CELEBRATION.buttonText;
+
+        }
 
     }
 
@@ -81,7 +98,7 @@ class Celebration {
 
     bindEvents() {
 
-        this.button.addEventListener(
+        this.button?.addEventListener(
 
             "click",
 
@@ -187,13 +204,17 @@ class Celebration {
 
     /**
      * ------------------------------------------
-     * Complete
+     * Continue
      * ------------------------------------------
      */
 
     complete() {
 
-        this.emit("celebration:completed");
+        eventBus.emit(
+
+            "celebration:continue"
+
+        );
 
     }
 
@@ -205,31 +226,13 @@ class Celebration {
 
     updateState() {
 
+        if (!this.element) return;
+
         this.element.classList.toggle(
 
             "is-visible",
 
             this.visible
-
-        );
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
 
         );
 
