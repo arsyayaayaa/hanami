@@ -3,11 +3,12 @@
  * Project Hanami
  * Component : Timeline
  * Description : Render and manage journey timeline.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import TIMELINE from "../data/timeline-data.js";
+import eventBus from "../core/event-bus.js";
 
 class Timeline {
 
@@ -62,7 +63,6 @@ class Timeline {
             item.className = "timeline-item";
 
             item.innerHTML = `
-            
                 <div class="timeline-marker"></div>
 
                 <div class="timeline-card">
@@ -86,7 +86,6 @@ class Timeline {
                     </p>
 
                 </div>
-
             `;
 
             this.element.appendChild(item);
@@ -217,29 +216,9 @@ class Timeline {
 
     complete() {
 
-        this.emit(
+        eventBus.emit(
 
             "timeline:completed"
-
-        );
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
 
         );
 
