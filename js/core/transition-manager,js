@@ -1,0 +1,64 @@
+/**
+ * ==================================================
+ * Project : Hanami
+ * Module  : Transition Manager
+ * Description : Handle scene transition animation.
+ * Version : 1.0
+ * ==================================================
+ */
+
+class TransitionManager {
+
+    constructor(options = {}) {
+
+        this.duration = options.duration ?? 600;
+
+        this.isTransitioning = false;
+
+    }
+
+    /**
+     * ------------------------------------------
+     * Transition
+     * ------------------------------------------
+     */
+
+    async transition(callback) {
+
+        if (this.isTransitioning) return;
+
+        this.isTransitioning = true;
+
+        document.body.classList.add("is-transitioning");
+
+        await this.wait(this.duration);
+
+        callback?.();
+
+        document.body.classList.remove("is-transitioning");
+
+        this.isTransitioning = false;
+
+    }
+
+    /**
+     * ------------------------------------------
+     * Delay Helper
+     * ------------------------------------------
+     */
+
+    wait(ms) {
+
+        return new Promise(resolve => {
+
+            setTimeout(resolve, ms);
+
+        });
+
+    }
+
+}
+
+const transitionManager = new TransitionManager();
+
+export default transitionManager;
