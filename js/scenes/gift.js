@@ -17,6 +17,7 @@ import Gallery from "../components/gallery.js";
 import Timeline from "../components/timeline.js";
 import Wishes from "../components/wishes.js";
 import Celebration from "../components/celebration.js";
+import Ending from "../components/ending.js";
 
 class GiftScene {
 
@@ -75,6 +76,9 @@ class GiftScene {
         this.celebration = new Celebration({
             element: "#scene-celebration"
         });
+        this.ending = new Ending({
+            element: "#scene-ending"
+        });
 
     }
 
@@ -94,6 +98,7 @@ class GiftScene {
         this.timeline.init();
         this.wishes.init();
         this.celebration.init();
+        this.ending.init();
 
     }
 
@@ -182,6 +187,18 @@ class GiftScene {
             "celebration:completed",
             ()=>{
                 this.nextScene();
+            }
+        );
+        this.celebration.element.addEventListener(
+            "celebration:completed",
+            () => {
+                this.showEnding();
+            }
+        );
+        this.ending.element.addEventListener(
+            "ending:replay",
+            () => {
+                this.restartJourney();
             }
         );
     }
@@ -321,6 +338,14 @@ class GiftScene {
     nextScene(){
         console.log("Ending Scene");
     }
+    showEnding() {
+        this.celebration.hide();
+        this.ending.show();
+    }
+    restartJourney() {
+        window.location.reload();
+    }
+    
 }
 
 export default GiftScene;
