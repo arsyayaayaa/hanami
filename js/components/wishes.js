@@ -3,11 +3,12 @@
  * Project Hanami
  * Component : Wishes
  * Description : Handle wishes input and validation.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import WISHES from "../data/wishes-data.js";
+import eventBus from "../core/event-bus.js";
 
 class Wishes {
 
@@ -61,15 +62,31 @@ class Wishes {
 
     render() {
 
-        this.title.textContent = WISHES.title;
+        if (this.title) {
 
-        this.description.textContent = WISHES.description;
+            this.title.textContent = WISHES.title;
 
-        this.input.placeholder = WISHES.placeholder;
+        }
 
-        this.input.maxLength = WISHES.maxLength;
+        if (this.description) {
 
-        this.submitButton.textContent = WISHES.submitText;
+            this.description.textContent = WISHES.description;
+
+        }
+
+        if (this.input) {
+
+            this.input.placeholder = WISHES.placeholder;
+
+            this.input.maxLength = WISHES.maxLength;
+
+        }
+
+        if (this.submitButton) {
+
+            this.submitButton.textContent = WISHES.submitText;
+
+        }
 
         this.updateCounter();
 
@@ -83,7 +100,7 @@ class Wishes {
 
     bindEvents() {
 
-        this.input.addEventListener(
+        this.input?.addEventListener(
 
             "input",
 
@@ -91,7 +108,7 @@ class Wishes {
 
         );
 
-        this.submitButton.addEventListener(
+        this.submitButton?.addEventListener(
 
             "click",
 
@@ -109,6 +126,8 @@ class Wishes {
 
     updateCounter() {
 
+        if (!this.counter || !this.input) return;
+
         const length = this.input.value.length;
 
         this.counter.textContent =
@@ -124,6 +143,8 @@ class Wishes {
 
     submit() {
 
+        if (!this.input) return;
+
         const message = this.input.value.trim();
 
         if (!this.validate(message)) {
@@ -133,8 +154,10 @@ class Wishes {
         }
 
         /**
+         * ------------------------------------------
          * Firebase
-         * (Phase 10)
+         * (Phase 11)
+         * ------------------------------------------
          */
 
         console.log("Wish:", message);
@@ -187,7 +210,11 @@ class Wishes {
 
     complete() {
 
-        this.emit("wishes:completed");
+        eventBus.emit(
+
+            "wishes:submitted"
+
+        );
 
     }
 
@@ -227,31 +254,13 @@ class Wishes {
 
     updateState() {
 
+        if (!this.element) return;
+
         this.element.classList.toggle(
 
             "is-visible",
 
             this.visible
-
-        );
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
 
         );
 
