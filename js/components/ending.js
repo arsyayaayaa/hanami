@@ -3,11 +3,12 @@
  * Project Hanami
  * Component : Ending
  * Description : Handle ending scene.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import ENDING from "../data/ending-data.js";
+import eventBus from "../core/event-bus.js";
 
 class Ending {
 
@@ -59,13 +60,29 @@ class Ending {
 
     render() {
 
-        this.title.textContent = ENDING.title;
+        if (this.title) {
 
-        this.message.textContent = ENDING.message;
+            this.title.textContent = ENDING.title;
 
-        this.quote.textContent = ENDING.quote;
+        }
 
-        this.button.textContent = ENDING.buttonText;
+        if (this.message) {
+
+            this.message.textContent = ENDING.message;
+
+        }
+
+        if (this.quote) {
+
+            this.quote.textContent = ENDING.quote;
+
+        }
+
+        if (this.button) {
+
+            this.button.textContent = ENDING.buttonText;
+
+        }
 
     }
 
@@ -77,7 +94,7 @@ class Ending {
 
     bindEvents() {
 
-        this.button.addEventListener(
+        this.button?.addEventListener(
 
             "click",
 
@@ -95,7 +112,11 @@ class Ending {
 
     replay() {
 
-        this.emit("ending:replay");
+        eventBus.emit(
+
+            "ending:replay"
+
+        );
 
     }
 
@@ -135,31 +156,13 @@ class Ending {
 
     updateState() {
 
+        if (!this.element) return;
+
         this.element.classList.toggle(
 
             "is-visible",
 
             this.visible
-
-        );
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
 
         );
 
