@@ -4,11 +4,12 @@
  * Component : Letter
  * Description : Handle birthday letter rendering
  *               and interaction.
- * Version : 1.0
+ * Version : 2.0
  * ==================================================
  */
 
 import LETTER from "../data/letter-data.js";
+import eventBus from "../core/event-bus.js";
 
 class Letter {
 
@@ -188,29 +189,7 @@ class Letter {
 
     next() {
 
-        this.emit("letter:continue");
-
-    }
-
-    /**
-     * ------------------------------------------
-     * Emit Custom Event
-     * ------------------------------------------
-     */
-
-    emit(name) {
-
-        if (!this.element) return;
-
-        this.element.dispatchEvent(
-
-            new CustomEvent(name, {
-
-                bubbles: true
-
-            })
-
-        );
+        eventBus.emit("letter:continue");
 
     }
 
